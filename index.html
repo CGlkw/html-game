@@ -1,0 +1,202 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fafafa">
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    li{
+      list-style: none;
+    }
+    ::-webkit-scrollbar{display: none;}
+    .check-num{
+      position:relative;
+      display: inline-block;
+      width: 60px;
+      height: 100px;
+      overflow-y: scroll;
+      /*overflow-x: visible;*/
+      z-index:0;
+     /* background: -webkit-linear-gradient(rgba(0,0,0,0),rgba(0,255,255,.5),rgba(0,0,0,0))*/;
+
+    }
+    .check-num ul{
+      margin-right: auto;
+      margin-left: auto;
+      width: 40px;
+      overflow-x: visible;
+    }
+    .check-num li{
+      position: relative;
+      text-align: center;
+      margin-bottom: 2px;
+      margin-top: 2px;
+      background-color: rgba(140, 242, 255, 0.69);
+      border: 1px rgba(38, 240, 255, 0.99) solid;
+      transition: all 0.4s cubic-bezier(0.46, 1.71, 0.6, 0.93);
+    }
+    .check-num li:hover{
+      transform: scale(1.2);
+      background-color: rgb(84, 255, 255);
+    }
+    /*.check-num ul{*/
+    /*  background-image:-webkit-linear-gradient(bottom,red,#fd8403,yellow);*/
+    /*  -webkit-background-clip:content;*/
+    /*  -webkit-text-fill-color:transparent;*/
+    /*}*/
+    .box{
+      width: 100%;
+      height: 100%;
+      margin: 100px;
+    }
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 70%;
+      width: 0;
+      height: 0;
+      border: 100px solid transparent;
+      border-left-width: 84px;
+      border-right-width: 84px;
+      background-color: aqua;
+    }
+    span:nth-child(1) {
+      -webkit-transform: translate(-50%, 0) rotate(60deg);
+      transform:  translate(-50%, 0) rotate(60deg);
+      -webkit-transform-origin: top left;
+      transform-origin: top left;
+    }
+    span:nth-child(2) {
+      webkit-transform:  translate(-50%, 0) rotate(100deg);
+      transform:  translate(-50%, 0) rotate(100deg);
+      -webkit-transform-origin: top left;
+      transform-origin: top left;
+    }
+    span:nth-child(3) {
+      webkit-transform: translate(-50%, 0) rotate(140deg);
+      transform:  translate(-50%, 0) rotate(140deg);
+      -webkit-transform-origin: top left;
+      transform-origin: top left;
+    }
+    span:nth-child(4) {
+      webkit-transform:translate(-50%, 0) rotate(180deg);
+      transform:  translate(-50%, 0) rotate(180deg);
+      -webkit-transform-origin: top left;
+      transform-origin: top left;
+    }
+    span:nth-child(5) {
+      webkit-transform:translate(-50%, 0) rotate(220deg);
+      transform:  translate(-50%, 0) rotate(220deg);
+      -webkit-transform-origin: top left;
+      transform-origin: top left;
+    }
+    span:nth-child(6) {
+      webkit-transform:translate(-50%, 0) rotate(260deg);
+      transform:  translate(-50%, 0) rotate(260deg);
+      -webkit-transform-origin: top left;
+      transform-origin: top left;
+    }
+    span:nth-child(7) {
+      webkit-transform:translate(-50%, 0) rotate(300deg);
+      transform:  translate(-50%, 0) rotate(300deg);
+      -webkit-transform-origin: top left;
+      transform-origin: top left;
+    }
+    span:nth-child(8) {
+      webkit-transform:translate(-50%, 0) rotate(340deg);
+      transform:  translate(-50%, 0) rotate(340deg);
+      -webkit-transform-origin: top left;
+      transform-origin: top left;
+    }
+    span:nth-child(9) {
+      webkit-transform:translate(-50%, 0) rotate(380deg);
+      transform:  translate(-50%, 0) rotate(380deg);
+      -webkit-transform-origin: top left;
+      transform-origin: top left;
+    }
+    .container {
+
+      margin: 100px auto;
+      background-color: rgba(231, 247, 255, 0.83);
+      position: relative;
+      width: 400px;
+      height:400px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .info {
+      width: 160px;
+      height: 160px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      font-size: 32px;
+      line-height: 160px;
+      text-align: center;
+      color: #8A8A8A;
+      margin-left: -80px;
+      margin-top: -80px;
+      border-radius: 50%;
+      background-color: #FFF;
+      box-shadow: 0 0 6px rgba(0, 144, 249, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+<div class="box">
+  <div class="check-num ">
+    <ul>
+      <li>0</li>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+    </ul>
+  </div>
+</div>
+<div class="container">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+
+</div>
+
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
+</body>
+<script>
+    function hide_box() {
+        $('.box').hide()
+    }
+    function show_box() {
+        $('.box').show()
+    }
+    $('body').on('click','.ccc',function(){
+        var p = $(this).offset();
+        $(".check-num").show().css({
+            left:p.left-15,
+            top:p.top+30
+        })
+    });
+</script>
+</html>

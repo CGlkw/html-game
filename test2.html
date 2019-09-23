@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<header>
+  <title> </title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+</header>
+<style>
+  *{
+    margin: 0;padding: 0;
+  }
+  .myCanvas{
+    left: 50%;
+    position: absolute;
+    background-color: rgba(0,0,0,0);
+    transition: all 0.4s cubic-bezier(0.46, 1.71, 0.6, 0.93);
+  }
+  .test{
+    position: relative;
+    margin: 50px;
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+  }
+  .myCanvas:hover{
+    transform: scale(1.2);
+  }
+  canvas:nth-child(1) {
+    -webkit-transform: translate(-50%, 0) rotate(60deg);
+    transform:  translate(-50%, 0) rotate(60deg);
+    -webkit-transform-origin: bottom center;
+    transform-origin: bottom center;
+  }
+  canvas:nth-child(2) {
+    webkit-transform:  translate(-50%, 0) rotate(100deg);
+    transform:  translate(-50%, 0) rotate(100deg);
+    -webkit-transform-origin: bottom center;
+    transform-origin: bottom center;
+  }
+  canvas:nth-child(3) {
+    webkit-transform: translate(-50%, 0) rotate(140deg);
+    transform:  translate(-50%, 0) rotate(140deg);
+    -webkit-transform-origin: bottom center;
+    transform-origin: bottom center;
+  }
+  canvas:nth-child(4) {
+    webkit-transform:translate(-50%, 0) rotate(180deg);
+    transform:  translate(-50%, 0) rotate(180deg);
+    -webkit-transform-origin: bottom center;
+    transform-origin: bottom center;
+  }
+  canvas:nth-child(5) {
+    webkit-transform:translate(-50%, 0) rotate(220deg);
+    transform:  translate(-50%, 0) rotate(220deg);
+    -webkit-transform-origin: bottom center;
+    transform-origin: bottom center;
+  }
+  canvas:nth-child(6) {
+    webkit-transform:translate(-50%, 0) rotate(260deg);
+    transform:  translate(-50%, 0) rotate(260deg);
+    -webkit-transform-origin: bottom center;
+    transform-origin: bottom center;
+  }
+  canvas:nth-child(7) {
+    webkit-transform:translate(-50%, 0) rotate(300deg);
+    transform:  translate(-50%, 0) rotate(300deg);
+    -webkit-transform-origin: bottom center;
+    transform-origin: bottom center;
+  }
+  canvas:nth-child(8) {
+    webkit-transform:translate(-50%, 0) rotate(340deg);
+    transform:  translate(-50%, 0) rotate(340deg);
+    -webkit-transform-origin: bottom center;
+    transform-origin: bottom center;
+  }
+  canvas:nth-child(9) {
+    webkit-transform:translate(-50%, 0) rotate(380deg);
+    transform:  translate(-50%, 0) rotate(380deg);
+    -webkit-transform-origin: bottom center;
+    transform-origin: bottom center;
+  }
+</style>
+<body>
+<div class="test">
+  <canvas class="myCanvas" width="100px" height="100px"></canvas>
+  <canvas class="myCanvas" width="100px" height="100px"></canvas>
+  <canvas class="myCanvas" width="100px" height="100px"></canvas>
+  <canvas class="myCanvas" width="100px" height="100px"></canvas>
+  <canvas class="myCanvas" width="100px" height="100px"></canvas>
+  <canvas class="myCanvas" width="100px" height="100px"></canvas>
+  <canvas class="myCanvas" width="100px" height="100px"></canvas>
+  <canvas class="myCanvas" width="100px" height="100px"></canvas>
+  <canvas class="myCanvas" width="100px" height="100px"></canvas>
+</div>
+
+</body>
+
+<script type="text/javascript">
+
+    function yuanhuan(){
+        var canvas = document.getElementsByClassName("myCanvas");
+        for(var i = 0;i<canvas.length;i++){
+            var ctx = canvas[i].getContext("2d");
+            var cood={x:50,y:100};
+            var radius=100;
+            var lastpos=-Math.PI*2*110/360;
+            ctx.beginPath();
+            ctx.moveTo(cood.x,cood.y);
+            ctx.fillStyle = "green";
+            var pos=lastpos+Math.PI*2*40/360;
+            ctx.arc(cood.x,cood.y,radius,lastpos,pos,false);
+            ctx.fill();
+            ctx.beginPath();
+
+            ctx.fillStyle ="white";
+            radius*=0.5;
+            ctx.arc(cood.x,cood.y,radius,0,Math.PI*2 ,false);
+            ctx.fill();
+        }
+
+
+    }
+    yuanhuan()
+
+</script>
+</html>
