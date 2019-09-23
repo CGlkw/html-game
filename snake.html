@@ -68,6 +68,7 @@
     function run(){
       snake.move(function (snake) {
           console.log("死亡！");
+          alert("失败！得分："+snake.score)
           window.clearInterval(timmerID);
       },function () {
           render(snake.body,snake.food)
