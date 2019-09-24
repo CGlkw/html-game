@@ -11,18 +11,5 @@
 </head>
 <body>
 </body>
-<script>
-    let test={
-        a :[[40,15],[41,15],[42,15],[43,15],[44,15],[45,15]]
-    }
-    console.log(isExec(test.a ,[41,15] ,0) > 0)
-    function isExec(list, data,exist){
-        exist = exist !== undefined ? exist : -1;
-        for (let key in list){
-            if (list[key][0] === data[0] && list[key][1] === data[1])
-                if(key != exist)
-                    return key;
-        }
-    }
-</script>
+
 </html>

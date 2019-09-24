@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>俄罗斯方块</title>
+    <script src="js/vendor/jquery-3.4.1.min.js"></script>
+</head>
+<style>
+    *{
+        margin: 0px;padding: 0px;
+    }
+    table{
+        border: 2px black solid;
+        border-collapse: collapse
+    }
+    .tetirs table tr td{
+        width: 10px;
+        height: 10px;
+        border: 1px #e6e6e6 solid;
+    }
+    .tetirs table{
+        margin: auto auto;
+    }
+</style>
+<body>
+<div class="tetirs">
+    <div class="modal"></div>
+    <table>
+    </table>
+    <div style="display: inline-block;margin: 0 auto">
+        <input class="start" type ="button" value="启动 [Space]"></button>
+        <input class="stop" type ="button" value="停止 [Space]" ></button>
+        <input class="reset" type ="button" value="重置 [Enter]"></button>
+    </div>
+</div>
+<script type="module">
+    import ITetirs from "./js/tetirs/i-tetirs.js";
+    let width = 20;
+    let height = 40;
+let timmerID;
+    let iTetirs = new ITetirs(width,height,10,10,'red');
+    $(function () {
+        let html = "";
+        for(let i = 0 ;i<height;i++){
+            html +='<tr>';
+            for(let j = 0 ;j<width;j++){
+                html+='<td></td>';
+            }
+            html+='</tr>';
+        }
+        $('.tetirs table').html(html);
+
+        render(iTetirs.block_list);
+    });
+    $('.start').click(function () {
+        start()
+    })
+    $('.stop').click(function () {
+        stop()
+    })
+    $('.reset').click(function () {
+        reset()
+    })
+
+    function start(){
+        timmerID=window.setInterval(function () {
+            run()
+        },33);  //调取函数，调取频率毫秒
+    }
+    function stop(){
+        window.clearInterval(timmerID);  //只有遇到clearInterval() 才停止
+    }
+    function reset() {
+        iTetirs.init();
+        render(iTetirs.block_list);
+    }
+
+    function run() {
+        iTetirs.move();
+        render(iTetirs.block_list)
+    }
+    function render(list) {
+        clean();
+        for (var key in list){
+            $('.tetirs table tr').eq(list[key].y).find('td').eq(list[key].x)[0].style.backgroundColor = list[key].cooler;
+        }
+    }
+    function clean () {
+        $('.tetirs table td').each(function () {
+            if('' !== this.style.backgroundColor){
+                this.style.backgroundColor = ''
+            }
+        })
+    }
+</script>
+</body>
+</html>
