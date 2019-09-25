@@ -75,9 +75,9 @@ class ITetirs extends Tetirs{
         if (this.i > this.speed){
             this.back_block_list = super.copy(this.block_list);
             this.center_y += 1;
+            this.flush();
             this.i = 0;
         }
-        this.flush();
         if (super.check(this.block_list, tetirsData.data)){
             this.destroy();
             callback();
@@ -87,7 +87,6 @@ class ITetirs extends Tetirs{
     }
 
     flush(){
-
         this.block_list[0].x = this.center_x + this.direction[this.l_direction][0] * 2;
         this.block_list[0].y = this.center_y + this.direction[this.l_direction][1] * 2;
         this.block_list[1].x = this.center_x + this.direction[this.l_direction][0];
