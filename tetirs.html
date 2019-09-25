@@ -34,11 +34,12 @@
     </div>
 </div>
 <script type="module">
-    import ITetirs from "./js/tetirs/i-tetirs.js";
+    import TetirsBox from "./js/tetirs/tetirs-box.js";
+    import tetirsData from "./js/tetirs/tetirs-data.js";
     let width = 20;
     let height = 40;
-let timmerID;
-    let iTetirs = new ITetirs(width,height,10,10,'red');
+    let timmerID;
+    let tetirsBox = new TetirsBox(width, height);
     $(function () {
         let html = "";
         for(let i = 0 ;i<height;i++){
@@ -49,8 +50,8 @@ let timmerID;
             html+='</tr>';
         }
         $('.tetirs table').html(html);
-
-        render(iTetirs.block_list);
+        tetirsBox.init();
+        render(tetirsData.full_data);
     });
     $('.start').click(function () {
         start()
@@ -71,13 +72,16 @@ let timmerID;
         window.clearInterval(timmerID);  //只有遇到clearInterval() 才停止
     }
     function reset() {
-        iTetirs.init();
-        render(iTetirs.block_list);
+        tetirsBox.init();
+        render(tetirsData.full_data);
     }
 
     function run() {
-        iTetirs.move();
-        render(iTetirs.block_list)
+        tetirsBox.run(function () {
+
+        },function () {
+            render(tetirsData.full_data)
+        });
     }
     function render(list) {
         clean();
