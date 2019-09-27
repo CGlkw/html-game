@@ -14,8 +14,8 @@
         border-collapse: collapse
     }
     .tetirs table tr td{
-        width: 10px;
-        height: 10px;
+        width: 15px;
+        height: 15px;
         border: 1px #e6e6e6 solid;
     }
     .tetirs table{
@@ -36,8 +36,8 @@
 <script type="module">
     import TetirsBox from "./js/tetirs/tetirs-box.js";
     import tetirsData from "./js/tetirs/tetirs-data.js";
-    let width = 20;
-    let height = 40;
+    let width = 10;
+    let height = 20;
     let timmerID;
     let tetirsBox = new TetirsBox(width, height);
     $(function () {
@@ -51,6 +51,7 @@
         }
         $('.tetirs table').html(html);
         tetirsBox.init();
+
         render(tetirsData.full_data);
     });
     $('.start').click(function () {

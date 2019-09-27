@@ -15,9 +15,14 @@ let tetirsData = {
         }
     },
     checkSuccess:function () {
-        for(let key in this.data){
-            if(this.data[key].length === this.width){
-                this.removeLine(parseInt(key));
+        s:for(let key in this.data){
+            for (let k = 0; k <this.data[key].length;k++ ){
+                if(!this.data[key][k]){
+                    continue s;
+                }
+                if (k === this.width -1 ){
+                    this.removeLine(parseInt(key));
+                }
             }
         }
     },
@@ -25,7 +30,15 @@ let tetirsData = {
         for (let i = this.data.length -1; i>=0 ; i--){
             if (i<= line ){
                 if (i !== 0){
-                    this.data[i] = this.data[i-1]
+                    if (this.data[i-1]){
+                        this.data[i] = this.data[i-1];
+                        for (var key in this.data[i]){
+                            this.data[i][key].y += 1;
+                        }
+                    }else{
+                        this.data[i] = [];
+                        break;
+                    }
                 }
             }
         }

@@ -20,7 +20,6 @@
       this.center_x = center_x;
       this.center_y = center_y;
       this.cooler = cooler;
-      this.l_direction = 0;
       this.i = 0;
     }
 
@@ -122,13 +121,8 @@
   }
 
 
-  let iTetirs = new ITetirs(30,40,10,10,'red');
-  iTetirs.init();
-  let back_block_list = copy(iTetirs.block_list);
-  iTetirs.center_y += 1;
-  iTetirs.flush();
-  console.log(back_block_list)
-  console.log(iTetirs.block_list)
+  let number = Math.round(Math.random()*1);
+  console.log(number)
 
 
 </script>
