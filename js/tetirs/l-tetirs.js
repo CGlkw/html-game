@@ -69,7 +69,11 @@ class LTetirs extends Tetirs{
     change(callback, render){
         let temp_center_x = this.center_x;
         let temp_center_y = this.center_y;
-        if (this.l_direction === 1){
+        if (this.l_direction === 0){
+            if (temp_center_x < 1 ){
+                temp_center_x = 1
+            }
+        }else if (this.l_direction === 1){
             if (temp_center_x < 1 ){
                 temp_center_x = 1
             }
@@ -133,17 +137,17 @@ class LTetirs extends Tetirs{
     flush(){
         this.getNextBody(this.block_list, this.center_x, this.center_y)
         if (this.l_direction=== 0){
-            this.left_block = this.block_list[2];
+            this.left_block = this.block_list[1];
             this.right_block = this.block_list[0];
         }else if (this.l_direction=== 1){
             this.left_block = this.block_list[0];
             this.right_block = this.block_list[3];
         }else if (this.l_direction=== 2){
             this.left_block = this.block_list[0];
-            this.right_block = this.block_list[2];
+            this.right_block = this.block_list[3];
         }else if (this.l_direction=== 3){
             this.left_block = this.block_list[3];
-            this.right_block = this.block_list[2];
+            this.right_block = this.block_list[1];
         }
     }
 
