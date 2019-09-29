@@ -3,7 +3,7 @@ import Block from "./block.js";
 import tetirsData from "./tetirs-data.js";
 
 
-class LTetirs extends Tetirs{
+class STetirs extends Tetirs{
     constructor(width, height, center_x, center_y, cooler){
         super(width, height);
         this.center_x = center_x;
@@ -12,21 +12,21 @@ class LTetirs extends Tetirs{
         this.l_direction = 0;
         this.i = 0;
 
-        this.direction =    [[1,1,0,1,0,-1],
-            [-1,1,-1,0,1,0],
-            [-1,-1,0,-1,0,1],
-            [1,-1,1,0,-1,0]];
+        this.direction =    [[1,-1,0,-1,-1,0],
+            [1,1,1,0,0,-1],
+            [-1,1,0,1,1,0],
+            [-1,-1,-1,0,0,1]];
     }
 
     init() {
         this.block_list = [];
         this.l_direction = 0;
-        this.block_list.push(new Block(this.center_x  +1, this.center_y+1, this.cooler));
-        this.block_list.push(new Block(this.center_x , this.center_y +1 , this.cooler));
+        this.block_list.push(new Block(this.center_x + 1, this.center_y-1, this.cooler));
+        this.block_list.push(new Block(this.center_x , this.center_y -1 , this.cooler));
         //this.block_list.push(new Block(this.center_x, this.center_y, this.cooler));
         this.block_list.push(new Block(this.center_x, this.center_y, this.cooler));
-        this.block_list.push(new Block(this.center_x, this.center_y - 1, this.cooler));
-        this.left_block = this.block_list[1];
+        this.block_list.push(new Block(this.center_x - 1, this.center_y , this.cooler));
+        this.left_block = this.block_list[3];
         this.right_block = this.block_list[0];
         this.i = 0;
         //$(document).unbind('keydown');
@@ -69,11 +69,11 @@ class LTetirs extends Tetirs{
     change(callback, render){
         let temp_center_x = this.center_x;
         let temp_center_y = this.center_y;
-        if (this.l_direction === 0){
+        if (this.l_direction === 1){
             if (temp_center_x < 1 ){
                 temp_center_x = 1
             }
-        }else if (this.l_direction === 2){
+        }else if (this.l_direction === 3){
             if( temp_center_x> this.width -2 ){
                 temp_center_x= this.width -2
             }
@@ -133,17 +133,17 @@ class LTetirs extends Tetirs{
     flush(){
         this.getNextBody(this.block_list, this.center_x, this.center_y)
         if (this.l_direction=== 0){
-            this.left_block = this.block_list[1];
+            this.left_block = this.block_list[3];
             this.right_block = this.block_list[0];
         }else if (this.l_direction=== 1){
-            this.left_block = this.block_list[0];
-            this.right_block = this.block_list[3];
+            this.left_block = this.block_list[2];
+            this.right_block = this.block_list[0];
         }else if (this.l_direction=== 2){
             this.left_block = this.block_list[0];
             this.right_block = this.block_list[3];
         }else if (this.l_direction=== 3){
-            this.left_block = this.block_list[3];
-            this.right_block = this.block_list[1];
+            this.left_block = this.block_list[1];
+            this.right_block = this.block_list[3];
         }
     }
 
@@ -160,4 +160,4 @@ class LTetirs extends Tetirs{
         block_list[3].y = center_y + a[5];
     }
 }
-export default LTetirs;
+export default STetirs;

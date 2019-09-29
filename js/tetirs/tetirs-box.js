@@ -2,6 +2,10 @@ import ITetirs from "./i-tetirs.js";
 import OTetirs from "./o-tetirs.js";
 import tetirsData from "./tetirs-data.js";
 import TTetirs from "./t-tetirs.js";
+import LTetirs from "./l-tetirs.js";
+import JTetirs from "./j-tetirs.js";
+import ZTetirs from "./z-tetirs.js";
+import STetirs from "./s-tetirs.js";
 
 class TetirsBox {
     constructor(width, height) {
@@ -77,14 +81,22 @@ class TetirsBox {
     }
 
     getNextTetirs(){
-        let number = Math.round(Math.random()*2);
+        let number = Math.round(Math.random()*6);
         switch (number) {
             case 0:
-                return new ITetirs(this.width, this.height, 4, -3, '#38fdff');
+                return new ITetirs(this.width, this.height, 4, -3, '#00fcff');
             case 1:
-                return new OTetirs(this.width, this.height, 4, -3, '#ff9b0c');
+                return new OTetirs(this.width, this.height, 4, -3, '#feff51');
             case 2:
                 return new TTetirs(this.width, this.height, 4, -3, '#8432ff');
+            case 3:
+                return new LTetirs(this.width, this.height, 4, -3, '#ffd125');
+            case 4:
+                return new JTetirs(this.width, this.height, 4, -3, '#243cff');
+            case 5:
+                return new ZTetirs(this.width, this.height, 4, -3, '#ff3538');
+            case 6:
+                return new STetirs(this.width, this.height, 4, -3, '#2eff41');
         }
     }
 }
