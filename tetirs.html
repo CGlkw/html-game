@@ -7,7 +7,7 @@
 </head>
 <style>
     *{
-        margin: 0px;padding: 0px;
+        margin: 0;padding: 0;
     }
     table{
         border: 2px black solid;
@@ -69,6 +69,7 @@
         timmerID=window.setInterval(function () {
             run()
         },33);  //调取函数，调取频率毫秒
+
     }
     function stop(){
         window.clearInterval(timmerID);  //只有遇到clearInterval() 才停止

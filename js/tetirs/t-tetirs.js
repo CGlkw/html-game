@@ -30,41 +30,8 @@ class TTetirs extends Tetirs{
         //$(document).unbind('keydown');
     }
 
-    onChange(data,callback, render){
-        switch (data) {
-            case 37:
-                this.moveLeft();
-                break;
-            case 38:
-                this.change(callback, render);
-                break;
-            case 39:
-                this.moveRight();
-                break;
-            case 40:
-                this.center_y += 1;
-                if (super.check(this.nextBody(), tetirsData.data)){
-                    callback();
-                }else{
-                    render();
-                }
-                break;
-        }
-    }
 
-    moveLeft(){
-        if (this.left_block.x <= 0) return;
-        if (super.isExist(tetirsData.data, this.leftBody())) return;
-        this.center_x -= 1;
-    }
-
-    moveRight(){
-        if (this.right_block.x >= this.width-1) return;
-        if (super.isExist(tetirsData.data, this.rightBody())) return;
-        this.center_x += 1;
-    }
-
-    change(callback, render){
+    change(){
         let temp_center_x = this.center_x;
         let temp_center_y = this.center_y;
         if (this.l_direction === 1){
@@ -87,46 +54,6 @@ class TTetirs extends Tetirs{
 
     }
 
-    move(callback, render){
-        this.center_y += 1;
-        if (super.check(this.nextBody(), tetirsData.data)){
-            callback();
-        }else{
-            render();
-        }
-    }
-
-    nextChange( temp_center_x,temp_center_y){
-        let _body_list = super.copy(this.block_list);
-        let _l_direction = this.l_direction + 1;
-        if (_l_direction === 4)_l_direction=0;
-        this.getNextBody(_body_list, temp_center_x, temp_center_y,_l_direction);
-        return _body_list;
-    }
-
-    rightBody(){
-        let right_body_list = super.copy(this.block_list);
-        let right_center_x =  this.center_x + 1;
-        let right_center_y =  this.center_y;
-        this.getNextBody(right_body_list, right_center_x, right_center_y)
-        return right_body_list;
-    }
-
-    leftBody(){
-        let left_body_list = super.copy(this.block_list);
-        let left_center_x =  this.center_x - 1;
-        let left_center_y =  this.center_y;
-        this.getNextBody(left_body_list, left_center_x, left_center_y)
-        return left_body_list;
-    }
-
-    nextBody(){
-        let next_body_list = super.copy(this.block_list);
-        let next_center_x =  this.center_x;
-        let next_center_y =  this.center_y;
-        this.getNextBody(next_body_list, next_center_x, next_center_y)
-        return next_body_list;
-    }
 
     flush(){
         this.getNextBody(this.block_list, this.center_x, this.center_y)

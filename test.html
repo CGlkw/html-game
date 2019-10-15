@@ -9,117 +9,22 @@
 
   </script>
 </head>
+<style>
+  * {margin: 0; padding: 0; box-sizing: border-box;}
+  .table {display: table; width: 100%;}
+
+  .son {margin:50px auto;}
+</style>
 <body>
+<div class="table" >
+
+    <div class="son" style="width: 100px; height: 100px;background: palegreen;">
+      1131313
+    </div>
+
+</div>
 </body>
 <script type="module">
-  import Block from "./js/tetirs/block.js";
-  import Tetirs from "./js/tetirs/tetirs.js";
-  class ITetirs extends Tetirs{
-    constructor(width, height, center_x, center_y, cooler){
-      super(width, height);
-      this.center_x = center_x;
-      this.center_y = center_y;
-      this.cooler = cooler;
-      this.i = 0;
-    }
-
-    init() {
-      this.block_list = [];
-      this.l_direction = 0;
-      this.block_list.push(new Block(this.center_x, this.center_y + 2, this.cooler));
-      this.block_list.push(new Block(this.center_x, this.center_y + 1, this.cooler));
-      this.block_list.push(new Block(this.center_x, this.center_y, this.cooler));
-      this.block_list.push(new Block(this.center_x, this.center_y - 1, this.cooler));
-      this.block_list.push(new Block(this.center_x, this.center_y - 2, this.cooler));
-      this.left_block = this.block_list[2];
-      this.right_block = this.block_list[2];
-      this.i = 0;
-
-      $(document).unbind('keydown');
-      this.onChange();
-    }
-
-    onChange(){
-      let _this = this;
-      $(document).keydown(function(event){
-        switch (event.keyCode) {
-          case 37:
-            if (_this.left_block.x <= 0) break;
-            _this.center_x -= 1;
-            break;
-          case 38:
-            _this.change();
-            break;
-          case 39:
-            if (_this.right_block.x >= _this.width-1) break;
-            _this.center_x += 1;
-            break;
-          case 40:
-            _this.center_y += 1;
-            break;
-        }
-        this.back_block_list = this.block_list.concat();
-      });
-    }
-
-    change(){
-      if (this.center_x < 2 ){
-        this.center_x = 2
-      }else if( this.center_x> this.width -3 ){
-        this.center_x = this.width -3
-      }
-      this.l_direction += 1;
-      if (this.l_direction === 4)this.l_direction=0;
-    }
-
-    move(callback, render){
-      this.i += 1;
-      if (this.i > this.speed){
-        this.back_block_list = this.block_list.concat();
-        this.center_y += 1;
-        this.i = 0;
-      }
-      this.flush();
-      if (super.check(this.block_list, tetirsData.data)){
-        this.destroy();
-        callback();
-      }else{
-        render();
-      }
-    }
-
-    flush(){
-
-      this.block_list[0].x = this.center_x + this.direction[this.l_direction][0] * 2;
-      this.block_list[0].y = this.center_y + this.direction[this.l_direction][1] * 2;
-      this.block_list[1].x = this.center_x + this.direction[this.l_direction][0];
-      this.block_list[1].y = this.center_y + this.direction[this.l_direction][1];
-      this.block_list[2].x = this.center_x;
-      this.block_list[2].y = this.center_y;
-      this.block_list[3].x = this.center_x + this.direction[this.l_direction][0] * -1;
-      this.block_list[3].y = this.center_y + this.direction[this.l_direction][1] * -1;
-      this.block_list[4].x = this.center_x + this.direction[this.l_direction][0] * -2;
-      this.block_list[4].y = this.center_y + this.direction[this.l_direction][1] * -2;
-      if (this.direction[this.l_direction][1] === 1 || this.direction[this.l_direction][1] === -1 ){
-        this.left_block = this.block_list[2];
-        this.right_block = this.block_list[2];
-      }else if (this.direction[this.l_direction][0] === 1){
-        this.left_block = this.block_list[4];
-        this.right_block = this.block_list[0];
-      }else{
-        this.left_block = this.block_list[0];
-        this.right_block = this.block_list[4];
-      }
-
-    }
-    next(){
-
-    }
-    destroy(){
-      $(document).unbind('keydown');
-    }
-  }
-
 
   let number = Math.round(Math.random()*1);
   console.log(number)

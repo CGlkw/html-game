@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>俄罗斯方块</title>
+    <script src="js/vendor/jquery-3.4.1.min.js"></script>
+    <style>
+        *{margin: 0px;padding: 0px}
+        .main{
+            display: table; width: 100%;
+            box-sizing: border-box;
+        }
+        .tetirs-box{
+            width: 300px;
+            height: 600px;
+            margin: 50px auto;
+        }
+        @media screen and (orientation: portrait) {
+            html{
+                width : 100vmin;
+                height : 100vmax;
+            }
+            body{
+                width : 100vmin;
+                height : 100vmax;
+            }
+            .main{
+                width : 100vmax;
+                height : 100vmin;
+                transform-origin: top left;
+                transform: rotate(90deg) translate(0,-100vmin);
+            }
+        }
+        @media screen and (orientation: landscape) {
+            html{
+                width : 100vmax;
+                height : 100vmin;
+            }
+            body{
+                width : 100vmax;
+                height : 100vmin;
+            }
+            .main{
+                width : 100vmax;
+                height : 100vmin;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="tetirs-box">
+        <canvas id="tetirs"></canvas>
+        <input class="start" type ="button" value="启动 [Space]"></button>
+        <input class="stop" type ="button" value="停止 [Space]" ></button>
+        <input class="reset" type ="button" value="重置 [Enter]"></button>
+    </div>
+</div>
+
+</body>
+<script src="./js/tetirs/tetirs-render.js" type="module"></script>
+<script type="module">
+    import tetirsRender from "./js/tetirs/tetirs-render.js";
+    $('.start').click(function () {
+        tetirsRender.start()
+    })
+    $('.stop').click(function () {
+        tetirsRender.stop()
+    })
+    $('.reset').click(function () {
+        tetirsRender.reset()
+    })
+</script>
+</html>

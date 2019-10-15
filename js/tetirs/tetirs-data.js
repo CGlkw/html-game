@@ -14,14 +14,15 @@ let tetirsData = {
             this.data[y][list[key].x] =list[key];
         }
     },
-    checkSuccess:function () {
+    checkSuccess:function (callback) {
         s:for(let key in this.data){
             for (let k = 0; k <this.data[key].length;k++ ){
                 if(!this.data[key][k]){
                     continue s;
                 }
-                if (k === this.width -1 ){
+                if (k === this.width -1 ) {
                     this.removeLine(parseInt(key));
+                    if (callback) callback();
                 }
             }
         }
